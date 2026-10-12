@@ -1,0 +1,174 @@
+<html lang="tr">
+<head>
+    <title>Masaüstü Uygulaması</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="UTF-8">
+    
+    <HTA:APPLICATION 
+        ID="oHTA"
+        APPLICATIONNAME="Uygulama"
+        BORDER="thin"
+        BORDERSTYLE="normal"
+        CAPTION="yes"
+        MAXIMIZEBUTTON="yes"
+        MINIMIZEBUTTON="yes"
+        SCROLL="no"
+        SINGLEINSTANCE="yes"
+        WINDOWSTATE="normal"
+        ICON="logo1.ico"
+    />
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            user-select: none;
+        }
+
+        body {
+            background-color: #1e1e2e;
+            color: #cdd6f4;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+        }
+
+        .header {
+            background: #313244;
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        .header h1 {
+            font-size: 20px;
+            color: #89b4fa;
+        }
+
+        .content {
+            flex: 1;
+            background: #181825;
+            padding: 20px;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        label {
+            font-size: 14px;
+            color: #a6adc8;
+        }
+
+        input[type="text"] {
+            background: #313244;
+            border: 1px solid #45475a;
+            color: #cdd6f4;
+            padding: 10px;
+            border-radius: 6px;
+            font-size: 14px;
+            outline: none;
+        }
+
+        input[type="text"]:focus {
+            border-color: #89b4fa;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        button {
+            background: #89b4fa;
+            color: #11111b;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        button:hover {
+            background: #b4befe;
+        }
+
+        button.secondary {
+            background: #f38ba8;
+        }
+
+        button.secondary:hover {
+            background: #f5e0dc;
+        }
+
+        .output {
+            margin-top: 15px;
+            background: #313244;
+            padding: 12px;
+            border-radius: 6px;
+            border-left: 4px solid #89b4fa;
+            font-size: 14px;
+            min-height: 45px;
+        }
+    </style>
+
+    <script type="text/javascript">
+        window.resizeTo(550, 480);
+
+        function mesajGoster() {
+            var girenAd = document.getElementById("kullaniciAdi").value;
+            var cikti = document.getElementById("ciktiEkrani");
+            
+            if (girenAd.replace(/\s/g, '') === "") {
+                cikti.style.borderColor = "#f38ba8";
+                cikti.innerHTML = "<span style='color: #f38ba8;'>Lütfen bir isim giriniz!</span>";
+            } else {
+                cikti.style.borderColor = "#a6e3a1";
+                cikti.innerHTML = "<span style='color: #a6e3a1;'>Hoş geldin, <b>" + girenAd + "</b>! HTA uygulaman başarıyla çalışıyor.</span>";
+            }
+        }
+
+        function temizle() {
+            document.getElementById("kullaniciAdi").value = "";
+            var cikti = document.getElementById("ciktiEkrani");
+            cikti.style.borderColor = "#89b4fa";
+            cikti.innerText = "Sonuç burada görünecek...";
+        }
+    </script>
+</head>
+<body>
+
+    <div class="header">
+        <h1>HTA Masaüstü Paneli</h1>
+    </div>
+
+    <div class="content">
+        <div class="form-group">
+            <label for="kullaniciAdi">Kullanıcı Adı:</label>
+            <input type="text" id="kullaniciAdi" placeholder="Adınızı yazın...">
+        </div>
+
+        <div class="btn-group">
+            <button onclick="mesajGoster()">Gönder</button>
+            <button class="secondary" onclick="temizle()">Temizle</button>
+        </div>
+
+        <div class="output" id="ciktiEkrani">
+            Sonuç burada görünecek...
+        </div>
+    </div>
+
+</body>
+</html>

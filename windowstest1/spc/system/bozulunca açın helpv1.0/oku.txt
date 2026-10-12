@@ -1,0 +1,1 @@
+ilk önce kurulum.bat e sağ tıklayp yönetici olarak çalıştırın ardından oraya 1 yazıp enter a basın otomatik düzelecektir. olmazsa yardım olarak scptr1155@gmail.com a mesaj atabilirsiniz
